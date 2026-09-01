@@ -1,10 +1,4 @@
-type Course = { 
-    id: number; 
-    code: string; 
-    title: string; 
-    credits: number; 
-    isOpen: boolean; 
-}; 
+import type { Course } from "@/types/course";
 
 const courses: Course[] = [ 
     { 

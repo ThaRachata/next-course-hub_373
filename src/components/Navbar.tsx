@@ -18,7 +18,12 @@ export default function Navbar() {
             <Link className="navLink" href="/about"> 
                 เกี่ยวกับ 
             </Link> 
-            </li> 
+            </li>
+            <li>
+            <Link className="navLink" href="/bands"> 
+                วงดนตรีที่ชอบ 
+            </Link> 
+            </li>   
         </ul> 
         </nav> 
     ); 

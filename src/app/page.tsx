@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CourseCard from "@/components/CourseCard";
 
 export default function Home() {
   const siteName: string = "CSMJU";
@@ -66,12 +66,7 @@ export default function Home() {
       </ul> 
       <section className="courseGrid">
         {courses.map((course) => (
-          <article key={course.id} className="courseCard">
-            <h2>{course.title}</h2>
-            <p>รหัสวิชา: {course.code}</p>
-            <p>หน่วยกิต: {course.credits}</p>
-            <p>สถานะ: {course.isOpen ? "เปิดลงทะเบียน" : "ปิดลงทะเบียน"}</p>
-          </article>
+          <CourseCard key={course.id} course={course} />
         ))}
       </section>
     </main>
