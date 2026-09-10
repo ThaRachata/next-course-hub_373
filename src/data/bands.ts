@@ -22,7 +22,7 @@ export const favoriteBands: Band[] = [
       {
         name: "โต้ง",
         role: "มือคีย์บอร์ด",
-        imageUrl: "/images/bands/Tong_polycat.jpg"
+        imageUrl: "/images/bands/tong_polycat.jpg"
       }
     ]
   },
