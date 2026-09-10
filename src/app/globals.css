@@ -3,8 +3,8 @@
 :root {
   --background: #f8fafc;
   --foreground: #1f2937;
-  --primary: #047857; 
-  --primary-dark: #14532d; 
+  --primary: #047857;
+  --primary-dark: #14532d;
 }
 
 @theme inline {
@@ -37,11 +37,221 @@ body {
   line-height: 1.6;
 }
 
+/* เพิ่ม: สไตล์สำหรับหน้าค้นหาและปุ่มวงดนตรี ให้ปุ่มอยู่ใต้การ์ดและอ่านสถานะได้ชัดเจน */
+.bandExplorer {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+  padding: 2rem 0 4rem;
+}
+
+.bandExplorer > h1 {
+  display: block;
+  margin: 0 0 1.25rem;
+  color: #f8fafc;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.bandToolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #172033, #111827);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bandSearchField {
+  display: grid;
+  gap: 0.45rem;
+  flex: 1;
+  max-width: 32rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.bandSearchInput {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  background: #0f172a;
+  color: #f8fafc;
+  font: inherit;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.bandSearchInput:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
+}
+
+.followedOnlyField {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: #e2e8f0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.followedOnlyField input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #34d399;
+}
+
+.resetButton {
+  min-height: 2.75rem;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #ef4444;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  background: #f87171;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
+}
+
+.resetButton:focus-visible {
+  outline: 2px solid #f8fafc;
+  outline-offset: 2px;
+}
+
+.bandSummary {
+  display: inline-flex;
+  align-items: center;
+  margin: 1.5rem 0 1.5rem;
+  padding: 0.5rem 1.25rem;
+
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 9999px;
+
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  padding: 2rem 1rem;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.bandGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 1.25rem;
+}
+
+.bandItem {
+  width: 300px;
+}
+
+.bandActions {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.75rem 0.25rem 0;
+}
+
+.bandActionButton {
+  flex: 1;
+  min-height: 2.4rem;
+  min-width: 0;
+  padding: 0.45rem 0.35rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  color: #f8fafc;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.bandActionButton:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.bandActionButton:focus-visible {
+  outline: 2px solid #f8fafc;
+  outline-offset: 2px;
+}
+
+.followButton {
+  background: #047857;
+}
+
+.unfollowButton {
+  background: #475569;
+}
+
+.likeButton {
+  background: #be123c;
+}
+
+.unlikeButton {
+  background: #475569;
+}
+
+.bandActionButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+@media (max-width: 680px) {
+  .bandToolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bandSearchField {
+    width: 100%;
+  }
+
+  .resetButton {
+    width: 100%;
+  }
+
+  .bandItem {
+    width: 100%;
+  }
+}
+
 /* แถบเมนู */
 .siteHeader {
   background: var(--primary-dark);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  position: sticky; 
+  position: sticky;
   z-index: 50;
 }
 
@@ -68,12 +278,7 @@ body {
 
 .navLink:hover,
 .navLink:focus-visible {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.15
-  ); 
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ส่วนโครงสร้างหน้าเว็บหลัก */
@@ -113,21 +318,27 @@ main > ul > li {
 .courseCard {
   /* กำหนดความกว้างเป็น 3 คอลัมน์  */
   flex: 0 1 calc((100% - 3rem) / 3);
-  
+
   padding: 1.5rem;
   border: 1px solid #334155;
   border-radius: 0.75rem;
-  background: #1e293b; 
+  background: #1e293b;
 }
 
-.courseCard h2 { margin-top: 0; margin-bottom: 0.5rem; color: #10b981; }
-.courseCard p { margin: 0.25rem 0; }
+.courseCard h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #10b981;
+}
+.courseCard p {
+  margin: 0.25rem 0;
+}
 
 /* เอฟเฟกต์เวลาเอาเมาส์ชี้*/
 .courseCard:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
-  border-color: var(--primary); 
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
 }
 
 .courseCard h2 {
@@ -152,5 +363,171 @@ main > ul > li {
   }
   .courseCard p {
     color: #cbd5e1;
+  }
+}
+
+/* หน้ารายวิชาให้ใช้โครงแบบการ์ดเดียวกับหน้าวงดนตรี */
+.coursePage {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+  padding: 2.5rem 0 4rem;
+}
+
+.coursePage > h1 {
+  display: block;
+  margin: 0 0 0.5rem;
+  color: #f8fafc;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.courseExplorer {
+  margin-top: 1.5rem;
+}
+
+.courseExplorer > h2 {
+  color: #f8fafc;
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.courseSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.courseSummary p {
+  margin: 0;
+}
+
+.courseToolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: #172033;
+}
+
+.searchField {
+  display: grid;
+  gap: 0.4rem;
+  flex: 1;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.searchField input {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  background: #0f172a;
+  color: #f8fafc;
+  font: inherit;
+}
+
+.searchField input:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+.courseFilters {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 15rem;
+  color: #cbd5e1;
+}
+
+.courseFilters label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  justify-content: initial;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.courseCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 13rem;
+  padding: 1.25rem;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: #222;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-4px);
+  border-color: #10b981;
+}
+
+.courseCard h2 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.courseCard p {
+  margin: 0.25rem 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.favoriteButton {
+  width: 100%;
+  margin-top: auto;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #047857;
+  border-radius: 0.5rem;
+  background: #047857;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.favoriteButton:hover,
+.favoriteButton:focus-visible {
+  background: #059669;
+}
+
+.emptyState {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px dashed #64748b;
+  border-radius: 0.75rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .coursePage {
+    width: min(100% - 1.25rem, 70rem);
+    padding-top: 1.5rem;
+  }
+
+  .courseToolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .courseFilters {
+    min-width: 0;
   }
 }
