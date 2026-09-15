@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Course } from "@/types/course";
 // ดึงโครงสร้าง Course จาก types/course มาใช้ในการกำหนด props ของ CourseCard
 
@@ -20,7 +21,9 @@ export default function CourseCard({
 }: CourseCardProps) {
   return (
     <article className="courseCard">
-      <h2>{course.name}</h2>
+      <h2>
+        <Link href={`/courses/${course.id}`}>{course.name}</Link>
+      </h2>
       <p>รหัสวิชา: {course.code}</p>
       <p>หน่วยกิต: {course.credit}</p>
       <p>ผู้สอน: {course.instructor}</p>
