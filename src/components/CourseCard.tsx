@@ -5,7 +5,9 @@ import type { Course } from "@/types/course";
 type CourseCardProps = {
   course: Course;
   isFavorite?: boolean;
-  onToggleFavorite?: (id: number) => void;
+  onToggleFavorite?: (id: string) => void;
+  onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
 };
 
 // สร้างคอมโพเนนต์ CourseCard เพื่อแสดงข้อมูลของวิชา
@@ -13,13 +15,16 @@ export default function CourseCard({
   course,
   isFavorite,
   onToggleFavorite,
+  onEdit,
+  onDelete,
 }: CourseCardProps) {
   return (
     <article className="courseCard">
-      <h2>{course.title}</h2>
+      <h2>{course.name}</h2>
       <p>รหัสวิชา: {course.code}</p>
-      <p>หน่วยกิต: {course.credits}</p>
-      <p>สถานะ: {course.isOpen ? "เปิดลงทะเบียน" : "ปิดลงทะเบียน"}</p>
+      <p>หน่วยกิต: {course.credit}</p>
+      <p>ผู้สอน: {course.instructor}</p>
+
       {onToggleFavorite && (
         <button
           className="favoriteButton"
@@ -28,6 +33,18 @@ export default function CourseCard({
           onClick={() => onToggleFavorite(course.id)}
         >
           {isFavorite ? "ลบจากรายการโปรด" : "เพิ่มในรายการโปรด"}
+        </button>
+      )}
+
+      {onEdit && (
+        <button type="button" onClick={() => onEdit(course.id)}>
+          แก้ไข
+        </button>
+      )}
+
+      {onDelete && (
+        <button type="button" onClick={() => onDelete(course.id)}>
+          ลบ
         </button>
       )}
     </article>
