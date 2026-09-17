@@ -116,24 +116,14 @@ export default function CourseExplorer({
     return matchesSearch && matchesFavoriteFilter;
   });
 
-  // แสดงผลล
+  // แสดงผล
+  // ... (โค้ดส่วนบนของไฟล์ CourseExplorer.tsx คงเดิม) ...
+
   return (
     <section className="courseExplorer" aria-labelledby="course-explorer-title">
       <h2 id="course-explorer-title">ค้นหารายวิชา</h2>
-      <CourseForm
-        key={editingId ?? "new-course"}
-        initialCourse={editingCourse}
-        onSave={handleSave}
-        onCancel={() => setEditingId(null)}
-      />
-      {/* สรุปจำนวนวิชาที่แสดงผล */}
-      <div className="courseSummary">
-        <p>รายการโปรด: {favoriteIds.length} รายวิชา</p>
-        <p>
-          แสดงผล {visibleCourses.length} จาก {courses.length} รายวิชา
-        </p>
-      </div>
-      {/* แถบช่องค้นหา */}
+
+      {/* 1. เอาแถบเครื่องมือค้นหาขึ้นมาก่อน */}
       <div className="courseToolbar">
         <label className="searchField" htmlFor="course-search">
           ค้นหาด้วยชื่อหรือรหัสวิชา
@@ -158,7 +148,24 @@ export default function CourseExplorer({
           </label>
         </div>
       </div>
-      {/* พื้นที่แสดงรายวิชา */}
+
+      {/* 2. สรุปจำนวนวิชาย้ายมาไว้ตรงกลางระหว่างกล่องค้นหากับกล่องเพิ่มวิชา (ถ้าพี่อยากให้อยู่เหนือการ์ด ก็เอาไปไว้ใต้ CourseForm ได้ครับ) */}
+      <div className="courseSummary">
+        <p>รายการโปรด: {favoriteIds.length} รายวิชา</p>
+        <p>
+          แสดงผล {visibleCourses.length} จาก {courses.length} รายวิชา
+        </p>
+      </div>
+
+      {/* 3. เอาฟอร์มเพิ่มวิชาย้ายลงมาไว้ข้างล่างกล่องค้นหา */}
+      <CourseForm
+        key={editingId ?? "new-course"}
+        initialCourse={editingCourse}
+        onSave={handleSave}
+        onCancel={() => setEditingId(null)}
+      />
+
+      {/* 4. พื้นที่แสดงรายวิชา (Card) อยู่ล่างสุดเหมือนเดิม */}
       {visibleCourses.length === 0 ? (
         <p className="emptyState">ไม่พบรายวิชาที่ตรงกับเงื่อนไข</p>
       ) : (

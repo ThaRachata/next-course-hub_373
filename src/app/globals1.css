@@ -1,0 +1,470 @@
+.gamePage {
+  width: min(100% - 2rem, 70rem);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.gamePage h1 {
+  font-size: 2.25rem;
+  color: #f8fafc;
+  margin-bottom: 2rem;
+  border-left: 6px solid #10b981;
+  padding-left: 1rem;
+}
+
+.gameExplorer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 2. กล่องฟอร์มเพิ่มเกม */
+.gameForm {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+
+  /* จัด Layout ข้างในฟอร์ม */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.gameForm h2 {
+  grid-column: 1 / -1; /* ให้หัวข้อยาวเต็มบรรทัด */
+  color: #10b981;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 0.75rem;
+}
+
+.gameForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.gameForm input,
+.gameForm select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  color: #f8fafc;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.gameForm input:focus,
+.gameForm select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* ปุ่มบันทึก */
+/* 1. โหมดเพิ่มเกมปกติ  */
+.gameForm button[type="submit"] {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: 150px;
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background-color: #059669;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.gameForm button[type="submit"]:hover {
+  background-color: #047857;
+}
+
+/* 2. โหมดแก้ไขเกม  */
+.gameForm.isEditing button[type="submit"] {
+  grid-column: 1 / -1;
+  justify-self: stretch; 
+  width: 100%; 
+}
+.gameForm button[type="button"] {
+  grid-column: 1 / -1;
+  padding: 0.85rem;
+  background-color: #ef4444;
+  color: white;
+  border: 2px solid #ef4444;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -0.75rem;
+}
+
+.gameForm button[type="button"]:hover {
+  background-color: #334155;
+  border: 2px solid;
+  color: #f8fafc;
+}
+
+.gameForm .input-wrapper {
+  position: relative; 
+  width: 100%;
+}
+
+.gameForm .formError {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  pointer-events: none;
+  
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ef4444;
+  border-radius: 0.5rem;
+  background: rgba(127, 29, 29, 0.95); 
+  color: #fca5a5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  z-index: 10;
+}
+
+.gameForm .formError::before {
+  content: "!";
+  display: inline-grid;
+  flex: 0 0 1.1rem;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.gameForm input[aria-invalid="true"],
+.gameForm select[aria-invalid="true"] {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
+}
+
+/* 3. ช่องค้นหาและตัวกรอง */
+.gameToolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 18rem);
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: #172033;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.gameToolbar > label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.gameToolbar input,
+.gameToolbar select {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.85rem 1rem;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  color: #f8fafc;
+  font-size: 1rem;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gameToolbar select {
+  cursor: pointer;
+}
+
+.gameToolbar input::placeholder {
+  color: #64748b;
+}
+
+.gameToolbar input:focus-visible,
+.gameToolbar select:focus-visible {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+
+.gameExplorer > h2 {
+  font-size: 1.5rem;
+  color: #f8fafc;
+  margin-bottom: -1rem; /* ขยับเข้าไปใกล้กล่องการ์ด */
+}
+
+/* 4. การ์ดแสดงผลเกม */
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.gameCard {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gameCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.4);
+  border-color: #475569;
+}
+
+.gameCard h2 {
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.gameCard h2 a {
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.gameCard h2 a:hover {
+  color: #10b981;
+}
+
+.gameCard p {
+  color: #f6f4f4;
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+}
+
+/* ปุ่มแก้ไข และ ปุ่มลบ ในการ์ด */
+.gameCard button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s ease;
+}
+
+.gameCard button:hover {
+  opacity: 0.85;
+}
+
+.gameCard button:nth-of-type(1) {
+  margin-top: auto; /* ดันปุ่มแรกลงล่างสุด */
+  background-color: #059669;
+  margin-bottom: 0.5rem;
+}
+
+.gameCard button:nth-of-type(2) {
+  background-color: #e11d48;
+}
+
+@media (max-width: 640px) {
+  .gamePage {
+    width: min(100% - 1.25rem, 70rem);
+    padding: 1.5rem 0 3rem;
+  }
+
+  .gameToolbar {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+.gameCard button:nth-of-type(2).btn-confirm-delete {
+  background-color: #f59e0b;
+  color: #111827;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+  transition: all 0.2s ease;
+}
+
+.gameCard button:nth-of-type(2).btn-confirm-delete:hover {
+  background-color: #d97706;
+  color: #ffffff;
+}
+
+.gameDetailPage {
+  width: min(100% - 2rem, 70rem);
+  margin: 0 auto;
+  padding: 3rem 0 5rem;
+}
+
+.gameDetailBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  color: #6ee7b7;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gameDetailBack::before {
+  content: "←";
+  font-size: 1.1rem;
+}
+
+.gameDetailBack:hover,
+.gameDetailBack:focus-visible {
+  color: #a7f3d0;
+  text-decoration: underline;
+}
+
+.gameDetail {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #1e293b 0%, #172033 100%);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.gameDetail::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 0 0 0 100%;
+  background: rgba(16, 185, 129, 0.08);
+  content: "";
+  pointer-events: none;
+}
+
+.gameDetailEyebrow {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+  color: #6ee7b7;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gameDetail h1 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+  color: #f8fafc;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.gameDetailStats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gameDetailStat {
+  display: grid;
+  gap: 0.4rem;
+  min-height: 7rem;
+  padding: 1rem;
+  border: 1px solid #334155;
+  border-radius: 0.65rem;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.gameDetailStat span {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.gameDetailStat strong {
+  align-self: end;
+  color: #f8fafc;
+  font-size: 1.1rem;
+}
+
+.gameStatus--playing {
+  color: #fcd34d !important;
+}
+
+.gameStatus--completed {
+  color: #6ee7b7 !important;
+}
+
+@media (max-width: 640px) {
+  .gameDetailPage {
+    width: min(100% - 1.25rem, 70rem);
+    padding: 1.5rem 0 3rem;
+  }
+
+  .gameDetailStats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================= */
+/* สไตล์สำหรับปุ่มรีเซ็ตข้อมูล */
+/* ========================================= */
+
+.reset-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-reset {
+  background-color: red; 
+  color: white; 
+  border: 1px solid #475569; 
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease; 
+}
+
+.btn-reset:hover {
+  background-color: #334155; 
+  color: #f8fafc; 
+  border-color: #64748b; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+}

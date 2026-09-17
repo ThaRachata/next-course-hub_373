@@ -531,3 +531,134 @@ main > ul > li {
     min-width: 0;
   }
 }
+
+.courseForm {
+  background: #1e293b; 
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.courseForm h2 {
+  grid-column: 1 / -1; 
+  margin: 0;
+  color: #10b981; 
+  font-size: 1.35rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+}
+
+.courseForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.courseForm input {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  background: #0f172a; 
+  color: #f8fafc;
+  font: inherit;
+  transition: all 0.2s ease;
+}
+
+.courseForm input:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 1px;
+  border-color: #10b981;
+}
+
+.courseForm input[aria-invalid="true"] {
+  border-color: #ef4444;
+  outline-color: #ef4444;
+}
+
+.courseForm p[role="alert"] {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: -0.8rem;
+  margin-bottom: 0;
+}
+
+.courseForm p[role="status"] {
+  grid-column: 1 / -1;
+  color: #10b981;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+.courseForm button[type="submit"] {
+  grid-column: 1 /-1;       
+  justify-self: end;        
+  width: fit-content;       
+  padding: 0.65rem 2rem;    
+  border: none;
+  border-radius: 0.5rem;
+  background: #047857;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.courseForm button[type="submit"]:hover {
+  background: #059669;
+}
+
+.courseForm button[type="button"] {
+  grid-column: 1 / -1;
+  padding: 0.75rem;
+  border: 1px solid #64748b;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #cbd5e1;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.courseForm button[type="button"]:hover {
+  background: #334155;
+  color: white;
+}
+
+.courseCard > button:not(.favoriteButton) {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font: inherit;
+  transition: all 0.2s ease;
+}
+.courseCard > button:nth-of-type(2) {
+  background: #334155;
+  color: #f8fafc;
+}
+
+.courseCard > button:nth-of-type(2):hover {
+  background: #475569;
+}
+
+.courseCard > button:nth-of-type(3) {
+  background: #991b1b; 
+  color: #f8fafc;
+}
+
+.courseCard > button:nth-of-type(3):hover {
+  background: #b91c1c; 
+}
